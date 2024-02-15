@@ -65,10 +65,9 @@ func ReturnOnParent(stack CallStack) CallStack {
 		stack.Parent.IsPrint = true
 		return *stack.Parent
 	}
-	return CallStack{
+	return RunTemplate(CallStack{
 		IsPrint: true,
 		ChatID:  stack.ChatID,
-		Action:  RunTemplate,
 		Bot:     stack.Bot,
-	}
+	})
 }

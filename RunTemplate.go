@@ -50,6 +50,14 @@ func RunTemplate(stack CallStack) CallStack {
 				}
 			}
 		}
+		if update.Message.IsCommand() {
+          switch update.Message.Command() {
+          case "back":
+              {
+                    return ReturnOnParent(stack)
+              }
+          }
+        }
 	}
 
 	// Repeat self
