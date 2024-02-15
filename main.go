@@ -12,7 +12,7 @@ type CallStack struct {
 	Update      *tgBotAPI.Update
 	Action      Run
 	IsPrint     bool
-	ParentStack *CallStack
+	Parent 		*CallStack
 	Data        string
 }
 

@@ -61,9 +61,9 @@ func GetChatID(update tgBotAPI.Update) int64 {
 }
 
 func ReturnOnParent(stack CallStack) CallStack {
-	if stack.ParentStack != nil {
-		stack.ParentStack.IsPrint = true
-		return *stack.ParentStack
+	if stack.Parent != nil {
+		stack.Parent.IsPrint = true
+		return *stack.Parent
 	}
 	return CallStack{
 		IsPrint: true,
