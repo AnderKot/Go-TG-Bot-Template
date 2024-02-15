@@ -30,6 +30,15 @@ func RunTemplate(stack CallStack) CallStack {
 		_, _ = stack.Bot.Send(msg)
 		return stack
 	} else {
+		// Processing a message
+		if stack.Update.Message != nil {
+			switch stack.Update.Message.Text {
+			case "back":
+				{
+					return ReturnOnParent(stack)
+				}
+			}
+		}
 		if stack.Update != nil {
 			// Processing a message
 			if stack.Update.CallbackQuery != nil {
