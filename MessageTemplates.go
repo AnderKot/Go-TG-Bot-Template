@@ -6,6 +6,10 @@ var MessageTemplates = map[string]map[string]string{
 		"ru":  "[Шаблон меню]\nШаблон текста\n%s",
 		"eng": "[Template menu]\nTemplate text",
 	},
+	"LoginMenu": {
+		"ru":  "[Логин меню]\nПриветствуем !\n\nДля входа введите ключ от акаунта 🔑",
+		"eng": "[Login menu]\nWelcome!\n\nTo log in, enter your account key 🔑",
+	},
 	"back": {
 		"ru":  "⬅️ Назад",
 		"eng": "⬅️ Back",
