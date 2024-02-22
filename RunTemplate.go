@@ -13,12 +13,12 @@ func RunTemplate(stack CallStack) CallStack {
 	if stack.IsPrint {
 		stack.IsPrint = false // delete or comment out if print repeated
 		// Print UI
-		msg := tgBotAPI.NewMessage(stack.ChatID, fmt.Sprintf(SelectTemplate("RunTemplate", data.languageСode),
+		msg := tgBotAPI.NewMessage(stack.ChatID, fmt.Sprintf(GetTemplate("RunTemplate", data.languageСode),
 			data.firstName,
 		))
 		mainMenuInlineKeyboard := tgBotAPI.NewInlineKeyboardMarkup(
 			tgBotAPI.NewInlineKeyboardRow(
-				tgBotAPI.NewInlineKeyboardButtonData(SelectTemplate("back", data.languageСode), "back"),
+				tgBotAPI.NewInlineKeyboardButtonData(GetTemplate("back", data.languageСode), "back"),
 			),
 		)
 		msg.ReplyMarkup = mainMenuInlineKeyboard
@@ -50,14 +50,14 @@ func RunTemplate(stack CallStack) CallStack {
 				}
 			}
 		}
-		if update.Message.IsCommand() {
-          switch update.Message.Command() {
-          case "back":
-              {
-                    return ReturnOnParent(stack)
-              }
-          }
-        }
+		if stack.Update.Message.IsCommand() {
+			switch stack.Update.Message.Command() {
+			case "back":
+				{
+					return ReturnOnParent(stack)
+				}
+			}
+		}
 	}
 
 	// Repeat self

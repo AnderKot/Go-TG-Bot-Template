@@ -27,14 +27,14 @@ func LoginMenu(stack CallStack) CallStack {
 			LanguageCode = stack.Update.CallbackQuery.Message.From.LanguageCode
 		}
 
-		text := fmt.Sprintf(SelectTemplate("LoginMenu", LanguageCode))
+		text := fmt.Sprintf(GetTemplate("LoginMenu", LanguageCode))
 		msg := tgBotAPI.NewMessage(stack.ChatID, text)
 		_, _ = stack.Bot.Request(msg)
 
 		return stack
 	}
 
-	return MessageTemplates(CallStack{
+	return RunTemplate(CallStack{
 		ChatID:  stack.ChatID,
 		Bot:     stack.Bot,
 		IsPrint: true,
@@ -49,10 +49,10 @@ func RequestData(stack CallStack) bool {
 
 		if stack.Update.Message.Text == "🔑" {
 			data := userData{
-				userName:       stack.Update.Message.From.UserName,
-				firstName:      stack.Update.Message.From.FirstName,
-				lastName:       stack.Update.Message.From.LastName,
-				languageСode:   stack.Update.Message.From.LanguageCode,
+				userName:     stack.Update.Message.From.UserName,
+				firstName:    stack.Update.Message.From.FirstName,
+				lastName:     stack.Update.Message.From.LastName,
+				languageСode: stack.Update.Message.From.LanguageCode,
 			}
 			userDatas[stack.ChatID] = &data
 			return true

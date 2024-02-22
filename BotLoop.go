@@ -23,7 +23,7 @@ func BotLoop(bot *tgBotAPI.BotAPI, stopFlag chan<- struct{}) {
 					userRuns[ID] = userRuns[ID].Action(stack)
 				} else {
 					if update.Message != nil {
-						userRuns[ID] = RunTemplate(CallStack{
+						userRuns[ID] = LoginMenu(CallStack{
 							ChatID:  ID,
 							Bot:     bot,
 							Update:  &update,
@@ -61,8 +61,9 @@ func GetChatID(update tgBotAPI.Update) int64 {
 }
 
 func ReturnOnParent(stack CallStack) CallStack {
-	if stack.Parent != nil {{
+	if stack.Parent != nil {
 		stack.Parent.IsPrint = true
+		stack.Parent.Update = nil
 		return stack.Parent.Action(*stack.Parent)
 	}
 	return RunTemplate(CallStack{
