@@ -9,7 +9,7 @@ import (
 type FormConstructor struct {
 	DB          Database.Database
 	Name        string
-	Model       Interface.IModel
+	Controller  Interface.IController
 	IsHasParent bool
 }
 
@@ -18,7 +18,7 @@ func (lc *FormConstructor) New() Interface.IPage {
 
 	f.DB = lc.DB
 	f.name = lc.Name
-	f.model = lc.Model
+	f.model = lc.Controller
 	f.isHasParent = lc.IsHasParent
 
 	if f.model.Init() {
@@ -37,7 +37,7 @@ type Form struct {
 	isHasParent    bool
 	isNeedToParent bool
 
-	model Interface.IModel
+	model Interface.IController
 }
 
 func (p *Form) CreateKeyBoard() {

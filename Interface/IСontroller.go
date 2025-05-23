@@ -1,6 +1,6 @@
 package Interface
 
-type IModel interface {
+type IController interface {
 	Init() bool
 	OnProcessingMessage(text string)
 	OnProcessingKey(data string)
